@@ -1,0 +1,50 @@
+name: publish-nuget
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix: 
+        dotnet: ['7.0']
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: ${{ matrix.dotnet }}
+        include-prerelease: True
+
+    - name: Create NuGet Package
+      run: dotnet pack -c Release 
+                    /p:ContinuousIntegrationBuild=true 
+                    /p:Version=${{ github.event.release.tag_name }} 
+                    /p:PackageReleaseNotes="See https://github.com/chrisfactory/Net.Core.Communication/releases/tag/${{ github.event.release.tag_name }}"
+      working-directory: ./src
+
+    - name: Archive Net.Core.Communication.Core NuGet Package
+      uses: actions/upload-artifact@v1
+      with:
+        name: Net.Core.Communication.Core
+        path: ./src/Core/bin/Release/Net.Core.Communication.Core.${{ github.event.release.tag_name }}.symbols.nupkg
+
+
+
+
+
+
+    - name: Archive Net.Core.Communication.SqlServer NuGet Package
+      uses: actions/upload-artifact@v1
+      with:
+        name: Net.Core.Communication.SqlServer
+        path: ./src/Net.Core.Communication.SqlServer/bin/Release/Net.Core.Communication.SqlServer.${{ github.event.release.tag_name }}.symbols.nupkg
+
+
+    - name: Publish Nuget Package
+      run: dotnet nuget push **/*.symbols.nupkg --api-key ${{ secrets.NET_CORE_COMMUNICATION_NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json 
+
+      

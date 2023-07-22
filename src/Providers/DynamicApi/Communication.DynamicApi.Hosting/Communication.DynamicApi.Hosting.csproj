@@ -1,33 +1,44 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>disable</ImplicitUsings>
-    <Nullable>disable</Nullable>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>disable</ImplicitUsings>
+		<Nullable>disable</Nullable>
 
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <AssemblyName>Communication.DynamicApi.Hosting</AssemblyName>
-    <RootNamespace>Communication.DynamicApi.Hosting</RootNamespace>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <Authors>Christophe Ohl</Authors>
-    <Company>Chrisfactory</Company>
-  </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.4.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
-  </ItemGroup>
+		<PackageId>Net.Core.Communication.DynamicApi.Hosting</PackageId>
+		<Authors>Christophe Ohl</Authors>
+		<Company>GarPhiTech</Company>
+		<PackageDescription>.Net Communication Package</PackageDescription>
+		<RepositoryUrl>https://github.com/chrisfactory/Net.Core.Communication</RepositoryUrl>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<!--<PackageReadmeFile>README.md</PackageReadmeFile>-->
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<IncludeSymbols>true</IncludeSymbols>
+		<!--<PackageIcon>XXXXX.png</PackageIcon>-->
+		<PackageProjectUrl>https://www.nuget.org/packages/Net.Core.Communication.DynamicApi.Hosting/</PackageProjectUrl>
+		<RepositoryType>nuget.org</RepositoryType>
+		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+		<EnableNETAnalyzers>True</EnableNETAnalyzers>
+		<AnalysisLevel>6.0</AnalysisLevel>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Core\Communication.Core.csproj" />
-    <ProjectReference Include="..\Communication.DynamicApi.Core\Communication.DynamicApi.Core.csproj" />
-  </ItemGroup>
- 
+		<AssemblyName>Communication.DynamicApi.Hosting</AssemblyName>
+		<RootNamespace>Communication.DynamicApi.Hosting</RootNamespace>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.4.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Core\Communication.Core.csproj" />
+		<ProjectReference Include="..\Communication.DynamicApi.Core\Communication.DynamicApi.Core.csproj" />
+	</ItemGroup>
+
 </Project>
