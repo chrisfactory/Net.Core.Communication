@@ -32,16 +32,30 @@ jobs:
         name: Net.Core.Communication.Core
         path: ./src/Core/bin/Release/Net.Core.Communication.Core.${{ github.event.release.tag_name }}.symbols.nupkg
 
-
-
-
-
-
-    - name: Archive Net.Core.Communication.SqlServer NuGet Package
+    - name: Archive Net.Core.Communication.Injection.Client NuGet Package
       uses: actions/upload-artifact@v1
       with:
-        name: Net.Core.Communication.SqlServer
-        path: ./src/Net.Core.Communication.SqlServer/bin/Release/Net.Core.Communication.SqlServer.${{ github.event.release.tag_name }}.symbols.nupkg
+        name: Net.Core.Communication.Injection.Client
+        path: ./src/Providers/Injection/Communication.Injection.Client/bin/Release/Net.Core.Communication.Injection.Client.${{ github.event.release.tag_name }}.symbols.nupkg
+
+    - name: Archive Net.Core.Communication.DynamicApi.Core NuGet Package
+      uses: actions/upload-artifact@v1
+      with:
+        name: Net.Core.Communication.DynamicApi.Core
+        path: ./src/Providers/DynamicApi/Communication.DynamicApi.Core/bin/Release/Net.Core.Communication.DynamicApi.Core.${{ github.event.release.tag_name }}.symbols.nupkg       
+
+    - name: Archive Net.Core.Communication.DynamicApi.Client NuGet Package
+      uses: actions/upload-artifact@v1
+      with:
+        name: Net.Core.Communication.DynamicApi.Client
+        path: ./src/Providers/DynamicApi/Communication.DynamicApi.Core/bin/Release/Net.Core.Communication.DynamicApi.Client.${{ github.event.release.tag_name }}.symbols.nupkg   
+   
+    - name: Archive Net.Core.Communication.DynamicApi.Hosting NuGet Package
+      uses: actions/upload-artifact@v1
+      with:
+        name: Net.Core.Communication.DynamicApi.Hosting
+        path: ./src/Providers/DynamicApi/Communication.DynamicApi.Core/bin/Release/Net.Core.Communication.DynamicApi.Hosting.${{ github.event.release.tag_name }}.symbols.nupkg   
+
 
 
     - name: Publish Nuget Package
