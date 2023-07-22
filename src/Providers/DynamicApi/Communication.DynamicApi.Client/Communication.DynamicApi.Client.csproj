@@ -24,7 +24,6 @@
 
 		<AssemblyName>Communication.DynamicApi.Client</AssemblyName>
 		<RootNamespace>Communication.DynamicApi.Client</RootNamespace>
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	</PropertyGroup>
 
 	<ItemGroup>

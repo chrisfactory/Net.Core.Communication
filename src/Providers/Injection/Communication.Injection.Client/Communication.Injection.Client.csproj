@@ -25,7 +25,6 @@
 
 		<AssemblyName>Communication.Injection.Client</AssemblyName>
 		<RootNamespace>Communication.Injection.Client</RootNamespace>
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	</PropertyGroup>
 
 	<ItemGroup>

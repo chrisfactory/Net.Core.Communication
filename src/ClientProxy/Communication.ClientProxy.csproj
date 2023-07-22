@@ -20,12 +20,11 @@
 		<RepositoryType>nuget.org</RepositoryType>
 		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
 		<EnableNETAnalyzers>True</EnableNETAnalyzers>
-		<AnalysisLevel>6.0</AnalysisLevel> 
+		<AnalysisLevel>6.0</AnalysisLevel>
 
 
 		<AssemblyName>Communication.ClientProxy</AssemblyName>
 		<RootNamespace>Communication.ClientProxy</RootNamespace>
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	</PropertyGroup>
 
 	<ItemGroup>

@@ -25,7 +25,6 @@
 
 		<AssemblyName>Communication.DynamicApi.Hosting</AssemblyName>
 		<RootNamespace>Communication.DynamicApi.Hosting</RootNamespace>
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	</PropertyGroup>
 
 	<ItemGroup>

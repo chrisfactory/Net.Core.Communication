@@ -26,7 +26,6 @@
 
 		<AssemblyName>Communication.Core</AssemblyName>
 		<RootNamespace>Communication</RootNamespace>
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	</PropertyGroup>
 
 	<ItemGroup>

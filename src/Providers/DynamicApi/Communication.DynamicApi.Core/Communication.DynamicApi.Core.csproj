@@ -25,7 +25,6 @@
 
 		<AssemblyName>Communication.DynamicApi.Core</AssemblyName>
 		<RootNamespace>Communication.DynamicApi.Core</RootNamespace>
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	</PropertyGroup>
 
 	<ItemGroup>
