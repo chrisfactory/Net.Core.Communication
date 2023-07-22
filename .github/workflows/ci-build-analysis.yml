@@ -42,7 +42,7 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore ./src
+      run: dotnet build --no-restore .
     - name: Test
       run: dotnet test --no-build --no-restore --verbosity normal
     - name: Perform CodeQL Analysis
