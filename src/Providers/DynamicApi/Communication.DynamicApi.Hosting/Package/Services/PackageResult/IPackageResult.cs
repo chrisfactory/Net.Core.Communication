@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.ApplicationModels;
 
-namespace Communication.DynamicApi.Hosting
+namespace Net.Core.Communication.DynamicApi.Hosting
 {
     internal interface IPackageResult
     {

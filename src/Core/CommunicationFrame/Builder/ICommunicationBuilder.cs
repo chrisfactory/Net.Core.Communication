@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 
-namespace Communication
+namespace Net.Core.Communication
 {
     public interface ICommunicationBuilder
     {

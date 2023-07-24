@@ -1,9 +1,9 @@
 ﻿using System;
 
-namespace Communication.ClientProxy
+namespace Net.Core.Communication.ClientProxy
 {
     public interface IUriProvider
     {
-        Uri BaseAbdress { get; }
+        Uri BaseAddress { get; }
     }
 }

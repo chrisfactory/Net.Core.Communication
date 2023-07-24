@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Communication
+namespace Net.Core.Communication
 {
     internal class UsedScopeResolver : IUsedScopeResolver
     {

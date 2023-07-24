@@ -1,4 +1,4 @@
-﻿using Communication;
+﻿using Net.Core.Communication;
 using Microsoft.AspNetCore.Builder;
 using System;
 

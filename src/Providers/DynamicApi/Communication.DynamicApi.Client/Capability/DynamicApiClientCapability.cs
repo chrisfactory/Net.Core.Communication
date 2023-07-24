@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Communication.DynamicApi.Client
+namespace Net.Core.Communication.DynamicApi.Client
 {
     public interface IDynamicApiClientCapability : IDynamicApiCapability
     {

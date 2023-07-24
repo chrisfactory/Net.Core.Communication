@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace Communication
+namespace Net.Core.Communication
 {
     public interface IFeature
     {

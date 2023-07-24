@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Communication
+namespace Net.Core.Communication
 {
     public interface ICapability
     {

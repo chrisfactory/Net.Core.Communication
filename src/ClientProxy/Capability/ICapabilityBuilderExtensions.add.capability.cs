@@ -1,5 +1,5 @@
-﻿using Communication.ClientProxy;
-using Communication;
+﻿using Net.Core.Communication.ClientProxy;
+using Net.Core.Communication;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace Microsoft.Extensions.DependencyInjection

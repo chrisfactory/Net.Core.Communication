@@ -1,7 +1,7 @@
-﻿using Communication;
+﻿using Net.Core.Communication;
 using System;
 
-namespace Communication.ClientProxy
+namespace Net.Core.Communication.ClientProxy
 {
     public interface IClientProxyCapability : ICapability
     {

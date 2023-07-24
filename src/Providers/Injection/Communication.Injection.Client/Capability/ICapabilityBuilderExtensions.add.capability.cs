@@ -1,5 +1,5 @@
-﻿using Communication;
-using Communication.Injection.Client;
+﻿using Net.Core.Communication;
+using Net.Core.Communication.Injection.Client;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace Microsoft.Extensions.DependencyInjection

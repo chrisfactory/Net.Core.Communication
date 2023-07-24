@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace Communication.DynamicApi
+namespace Net.Core.Communication.DynamicApi
 {
     public interface ISchemaApiActionFactory
     {

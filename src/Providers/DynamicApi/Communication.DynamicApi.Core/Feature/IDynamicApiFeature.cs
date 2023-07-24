@@ -1,6 +1,7 @@
-﻿using System.Reflection;
+﻿using Net.Core.Communication;
+using System.Reflection;
 
-namespace Communication.DynamicApi
+namespace Net.Core.Communication.DynamicApi
 {
     public interface IDynamicApiFeature : IFeature
     {

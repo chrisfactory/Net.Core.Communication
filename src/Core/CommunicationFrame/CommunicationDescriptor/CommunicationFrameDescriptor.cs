@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Communication
+namespace Net.Core.Communication
 {
     internal class CommunicationFrameDescriptor : ICommunicationFrameDescriptor
     {
@@ -19,6 +19,13 @@ namespace Communication
         {
             var featureType = typeof(TFeature);
             return (TFeature)Scope.Single(t => t.Feature.Type == featureType).Feature;
+        }
+
+        public bool FeatureIsImplemented<TFeature>()
+            where TFeature : class, IFeature
+        {
+            var featureType = typeof(TFeature);
+            return Scope.Any(t => t.Feature.Type == featureType);
         }
 
         public TCapability GetCapability<TFeature, TCapability>()

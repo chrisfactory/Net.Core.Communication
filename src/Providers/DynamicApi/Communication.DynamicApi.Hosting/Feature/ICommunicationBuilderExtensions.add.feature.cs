@@ -1,6 +1,6 @@
-﻿using Communication;
-using Communication;
-using Communication.DynamicApi.Hosting;
+﻿using Net.Core.Communication;
+using Net.Core.Communication.DynamicApi;
+using Net.Core.Communication.DynamicApi.Hosting;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System;
 
@@ -21,7 +21,6 @@ namespace Microsoft.Extensions.DependencyInjection
 
             return builder;
         }
-     
 
         public static ICommunicationBuilder WithDynamicApiHosting(this ICommunicationBuilder descriptor, string template)
         {

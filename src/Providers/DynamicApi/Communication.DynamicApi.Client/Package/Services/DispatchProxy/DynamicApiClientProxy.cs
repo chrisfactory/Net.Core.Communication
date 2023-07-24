@@ -11,17 +11,22 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 
-namespace Communication.DynamicApi.Client
+namespace Net.Core.Communication.DynamicApi.Client
 {
 
-    internal class DynamicApiClientProxy : DispatchProxy, IDisposable
+    public class DynamicApiClientProxy : DispatchProxy, IDisposable
     {
 #pragma warning disable CS8618 // Un champ non-nullable doit contenir une valeur non-null lors de la fermeture du constructeur. Envisagez de déclarer le champ comme nullable.
         private ISchemaApi _schema;
+        private Uri _BaseAddress;
+        private string _route;
 #pragma warning restore CS8618 // Un champ non-nullable doit contenir une valeur non-null lors de la fermeture du constructeur. Envisagez de déclarer le champ comme nullable.
         internal void Attach(ISchemaApi schema)
         {
             _schema = schema;
+            _route = _schema.RouteProvider.GetTemplate(_schema);
+            _BaseAddress = ((IDynamicApiClientFeature)_schema.Feature).BaseAddressProvider.BaseAddress;
+            Address = new Uri(_BaseAddress, _route); 
         }
 
         /// <inheritdoc />
@@ -29,8 +34,8 @@ namespace Communication.DynamicApi.Client
         {
 
             var matchAction = _schema[targetMethod];
-            var route = _schema.RouteProvider.GetTemplate(_schema);
-            var uri = ((IDynamicApiClientFeature)_schema.Feature).BaseAdressProvider.BaseAbdress;
+
+            var uri = _BaseAddress;
             var request = new ExpandoObject() as IDictionary<string, Object>;
             int idx = 0;
             foreach (var param in targetMethod.GetParameters())
@@ -39,11 +44,12 @@ namespace Communication.DynamicApi.Client
                 idx++;
             }
 
-            return new HttpCaller().PostAsync(uri, targetMethod.ReturnType, route, matchAction.ActionName, request).GetAwaiter().GetResult();
+            return new HttpCaller().Post(uri, targetMethod.ReturnType, _route, matchAction.ActionName, request);
 
         }
 
 
+        public Uri Address { get; private set; } 
         public void Dispose()
         {
 
@@ -60,13 +66,13 @@ namespace Communication.DynamicApi.Client
             FromResult = typeof(Task<>).GetMethod(nameof(Task.FromResult), BindingFlags.Static | BindingFlags.Public | BindingFlags.FlattenHierarchy);
         }
 
-        public async Task<object> PostAsync(Uri baseAdress, Type resultType, string controller, string path, object request)
+        public object Post(Uri baseAddress, Type resultType, string controller, string path, object request)
         {
 
-            var requestPath = $"{baseAdress.LocalPath}{controller}/{path}".Replace("//", "/");
+            var requestPath = $"{controller}/{path}";
             using (var client = new HttpClient())
             {
-                client.BaseAddress = baseAdress;
+                client.BaseAddress = baseAddress;
 
                 // Setting content type.  
                 client.DefaultRequestHeaders.Accept.Clear();
@@ -79,47 +85,34 @@ namespace Communication.DynamicApi.Client
                 //client.DefaultRequestHeaders
 
 
-                var res = await client.PostAsJsonAsync(requestPath, request, new JsonSerializerOptions()
+                var res = client.PostAsJsonAsync(requestPath, request, new JsonSerializerOptions()
                 {
                     DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.Never,
                     PropertyNameCaseInsensitive = true,
-                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
 
-                });
+                }).GetAwaiter().GetResult();
 
 
                 if (res.IsSuccessStatusCode)
                 {
-                    try
-                    {
-                        return ReadResponse(res, resultType);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw await ThrowException(baseAdress, requestPath, res, ex);
-                    }
-
+                    return ReadResponse(res, resultType);
                 }
                 else
                 {
-                    throw await ThrowException(baseAdress, requestPath, res);
+                    StringBuilder message = new StringBuilder();
+
+                    Uri full = new Uri(baseAddress, requestPath);
+                    if (!string.IsNullOrEmpty(res.ReasonPhrase))
+                        message.AppendLine($"Reason: {full} {res.ReasonPhrase}");
+                    string msg = res.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                    if (!string.IsNullOrEmpty(msg))
+                        message.AppendLine($"Details: {msg}");
+
+                    throw new Exception(message.ToString());
                 }
             }
         }
 
-        private static async Task<Exception> ThrowException(Uri baseAdress, string requestPath, HttpResponseMessage res, Exception inner = null)
-        {
-            StringBuilder message = new StringBuilder();
-
-            Uri full = new Uri(baseAdress, requestPath);
-            if (!string.IsNullOrEmpty(res.ReasonPhrase))
-                message.AppendLine($"Reason: {full} {res.ReasonPhrase}");
-            string msg = await res.Content.ReadAsStringAsync();
-            if (!string.IsNullOrEmpty(msg))
-                message.AppendLine($"Details: {msg}");
-
-            throw new Exception(message.ToString(), inner);
-        }
 
         private static object ReadResponse(HttpResponseMessage message, Type resultType)
         {

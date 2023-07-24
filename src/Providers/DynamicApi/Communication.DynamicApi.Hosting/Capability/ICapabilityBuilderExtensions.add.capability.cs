@@ -1,5 +1,5 @@
-﻿using Communication;
-using Communication.DynamicApi.Hosting;
+﻿using Net.Core.Communication;
+using Net.Core.Communication.DynamicApi.Hosting; 
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -16,7 +16,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
                 var builder = p.GetRequiredService<IDynamicApiHostingCapabilityBuilder>();
                 return builder.Build();
-            });
+            }); 
 
             return builder;
         }

@@ -1,8 +1,8 @@
-﻿using Communication;
+﻿using Net.Core.Communication;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace Communication.DynamicApi.Hosting
+namespace Net.Core.Communication.DynamicApi.Hosting
 {
     public class DynamicApiHostingPackage : ICapabilityPackage
     {

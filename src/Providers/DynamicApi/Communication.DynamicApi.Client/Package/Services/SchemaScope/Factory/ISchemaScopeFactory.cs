@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
 
-namespace Communication.DynamicApi.Client
+namespace Net.Core.Communication.DynamicApi.Client
 {
     public interface ISchemaScopeFactory
     {

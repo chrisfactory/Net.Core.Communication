@@ -1,4 +1,4 @@
-﻿namespace Communication.ClientProxy
+﻿namespace Net.Core.Communication.ClientProxy
 {
     internal interface IPackageResult
     {

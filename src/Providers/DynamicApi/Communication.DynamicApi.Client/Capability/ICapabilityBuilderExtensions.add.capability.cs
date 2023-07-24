@@ -1,5 +1,5 @@
-﻿using Communication;
-using Communication.DynamicApi.Client;
+﻿using Net.Core.Communication;
+using Net.Core.Communication.DynamicApi.Client;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace Microsoft.Extensions.DependencyInjection

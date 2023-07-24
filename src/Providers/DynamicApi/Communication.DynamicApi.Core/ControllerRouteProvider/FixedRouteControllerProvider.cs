@@ -1,4 +1,4 @@
-﻿namespace Communication.DynamicApi
+﻿namespace Net.Core.Communication.DynamicApi
 {
     public class FixedRouteControllerProvider : IRouteControllerProvider
     {

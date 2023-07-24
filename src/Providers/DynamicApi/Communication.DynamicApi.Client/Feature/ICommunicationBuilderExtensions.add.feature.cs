@@ -1,9 +1,9 @@
-﻿using Communication.ClientProxy;
-using Communication;
-using Communication.DynamicApi.Client;
+﻿using Net.Core.Communication.ClientProxy;
+using Net.Core.Communication;
+using Net.Core.Communication.DynamicApi;
+using Net.Core.Communication.DynamicApi.Client;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System;
-using Communication;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -22,18 +22,12 @@ namespace Microsoft.Extensions.DependencyInjection
 
             return builder;
         }
-        public static ICommunicationBuilder WithDynamicApiClient(this ICommunicationBuilder descriptor, string uri)
-        {
-            return descriptor.WithDynamicApiClient(b =>
-            {
-                b.UseBaseAdress(uri); 
-            });
-        }
+
         public static ICommunicationBuilder WithDynamicApiClient(this ICommunicationBuilder descriptor, string uri, string template)
         {
             return descriptor.WithDynamicApiClient(b =>
             {
-                b.UseBaseAdress(uri);
+                b.UseBaseAddress(uri);
                 b.UseRoute(template);
             });
         }
@@ -41,7 +35,7 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             return descriptor.WithDynamicApiClient(b =>
             {
-                b.UseBaseAdress(uri);
+                b.UseBaseAddress(uri);
                 b.UseRoute(template);
             });
         }
@@ -49,7 +43,7 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             return descriptor.WithDynamicApiClient(b =>
             {
-                b.UseBaseAdress(uriProvider);
+                b.UseBaseAddress(uriProvider);
                 b.UseRoute(template);
             });
         }
@@ -57,7 +51,7 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             return descriptor.WithDynamicApiClient(b =>
             {
-                b.UseBaseAdress(uriProvider);
+                b.UseBaseAddress(uriProvider);
                 b.UseRoute(template);
             });
         }
@@ -66,7 +60,7 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             return descriptor.WithDynamicApiClient(b =>
             {
-                b.UseBaseAdress(uri);
+                b.UseBaseAddress(uri);
                 b.UseRoute<TRoute>();
             });
         }
@@ -75,7 +69,7 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             return descriptor.WithDynamicApiClient(b =>
             {
-                b.UseBaseAdress(uri);
+                b.UseBaseAddress(uri);
                 b.UseRoute<TRoute>();
             });
         }
@@ -84,7 +78,7 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             return descriptor.WithDynamicApiClient(b =>
             {
-                b.UseBaseAdress(uriProvider);
+                b.UseBaseAddress(uriProvider);
                 b.UseRoute<TRoute>();
             });
         }
@@ -93,7 +87,7 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             return descriptor.WithDynamicApiClient(b =>
             {
-                b.UseBaseAdress(uriProvider);
+                b.UseBaseAddress(uriProvider);
                 b.UseRoute<TRoute>();
             });
         }
@@ -104,7 +98,7 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             return descriptor.WithDynamicApiClient(b =>
             {
-                b.UseBaseAdress<TUriProvider>();
+                b.UseBaseAddress<TUriProvider>();
                 b.UseRoute<TRoute>();
             });
         }

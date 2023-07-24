@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Communication
+namespace Net.Core.Communication
 {
     public interface ICommunicationFrameFilter
     {

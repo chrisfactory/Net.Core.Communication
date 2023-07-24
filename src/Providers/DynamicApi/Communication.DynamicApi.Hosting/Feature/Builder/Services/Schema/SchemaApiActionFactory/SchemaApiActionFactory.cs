@@ -1,8 +1,8 @@
-﻿using Communication.DynamicApi.Hosting;
+﻿using Net.Core.Communication.DynamicApi.Hosting;
 using System.Linq;
 using System.Reflection;
 
-namespace Communication.DynamicApi.Hosting
+namespace Net.Core.Communication.DynamicApi.Hosting
 {
     internal class SchemaApiActionFactory : ISchemaApiActionFactory
     {

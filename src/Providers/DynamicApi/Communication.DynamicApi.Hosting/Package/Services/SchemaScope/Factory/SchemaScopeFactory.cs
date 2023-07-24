@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace Communication.DynamicApi.Hosting
+namespace Net.Core.Communication.DynamicApi.Hosting
 {
     internal class SchemaScopeFactory : ISchemaScopeFactory
     {

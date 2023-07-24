@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Communication
+namespace Net.Core.Communication
 {
     internal class CapabilityDescriptor : ICapabilityDescriptor
     {

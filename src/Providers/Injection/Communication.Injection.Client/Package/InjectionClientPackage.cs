@@ -1,7 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Net.Core.Communication;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace Communication.Injection.Client
+namespace Net.Core.Communication.Injection.Client
 {
     public class InjectionClientPackage : ICapabilityPackage
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
 
-namespace Communication.DynamicApi
+namespace Net.Core.Communication.DynamicApi
 {
     public interface ISchemaApi : IEnumerable<ISchemaApiAction>
     {

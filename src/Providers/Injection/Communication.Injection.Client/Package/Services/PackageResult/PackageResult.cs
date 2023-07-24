@@ -1,6 +1,6 @@
-﻿using Communication.ClientProxy;
+﻿using Net.Core.Communication.ClientProxy;
 
-namespace Communication.Injection.Client
+namespace Net.Core.Communication.Injection.Client
 {
     internal class PackageResult : IPackageResult
     {

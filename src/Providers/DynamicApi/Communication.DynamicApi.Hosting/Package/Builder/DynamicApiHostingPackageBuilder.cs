@@ -1,10 +1,10 @@
-﻿using Communication;
+﻿using Net.Core.Communication;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
 
-namespace Communication.DynamicApi.Hosting
+namespace Net.Core.Communication.DynamicApi.Hosting
 {
     internal class DynamicApiHostingPackageBuilder : IDynamicApiHostingPackageBuilder
     {

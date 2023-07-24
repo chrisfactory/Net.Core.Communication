@@ -1,8 +1,8 @@
-﻿using Communication;
+﻿using Net.Core.Communication;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace Communication.ClientProxy
+namespace Net.Core.Communication.ClientProxy
 {
     public class ClientProxyPackage : ICapabilityPackage
     {

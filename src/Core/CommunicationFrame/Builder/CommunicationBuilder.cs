@@ -1,9 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Linq;
 
-namespace Communication
+namespace Net.Core.Communication
 {
     internal class CommunicationBuilder : ICommunicationBuilder
     {
@@ -23,8 +21,7 @@ namespace Communication
         public IServiceCollection Services { get; }
 
         public ICommunicationFrameDescriptor Build(IServiceProvider rootProvider)
-        { 
-
+        {
             Services.AddSingleton(ServiceDescriptor);
             var capabilities = rootProvider.GetRequiredService<ICapabilityDescriptor>();
             Services.AddSingleton(capabilities);

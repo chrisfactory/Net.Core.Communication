@@ -1,14 +1,14 @@
-﻿using Communication.ClientProxy;
-using Communication;
+﻿using Net.Core.Communication.ClientProxy;
+using Net.Core.Communication;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using static Communication.DynamicApi.Client.DynamicApiClientPackage;
+using static Net.Core.Communication.DynamicApi.Client.DynamicApiClientPackage;
 
-namespace Communication.DynamicApi.Client
+namespace Net.Core.Communication.DynamicApi.Client
 {
     internal class DynamicApiClientPackageBuilder : IDynamicApiClientPackageBuilder
     {

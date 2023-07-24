@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Communication.DynamicApi
+namespace Net.Core.Communication.DynamicApi
 {
     public interface ISchemaApiActionProvider
     {

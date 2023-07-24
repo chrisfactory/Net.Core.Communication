@@ -2,14 +2,14 @@
 using System.Linq;
 using System.Reflection;
 
-namespace Communication.DynamicApi.Hosting
+namespace Net.Core.Communication.DynamicApi.Hosting
 {
     public interface IProxy
     {
         void Invoke();
-        void Invoke<TRequest>(TRequest request);
+        void Invoke<TRequest>(TRequest request) where TRequest : DynamicClass;
         TResult Invoke<TResult>();
-        TResult Invoke<TResult, TRequest>(TRequest request);
+        TResult Invoke<TResult, TRequest>(TRequest request) where TRequest : DynamicClass;
     }
     public interface IHostProxyController<T> : IProxy
     {

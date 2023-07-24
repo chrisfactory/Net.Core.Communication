@@ -1,8 +1,8 @@
-﻿using Communication;
+﻿using Net.Core.Communication;
 using System;
 using System.Reflection;
 
-namespace Communication.ClientProxy
+namespace Net.Core.Communication.ClientProxy
 {
     public interface IClientProxyFeature : IFeature
     { 

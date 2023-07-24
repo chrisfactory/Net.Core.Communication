@@ -1,9 +1,9 @@
-﻿using Communication;
+﻿using Net.Core.Communication;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Reflection;
 
-namespace Communication.Injection.Client
+namespace Net.Core.Communication.Injection.Client
 {
     public interface IInjectionClientFeature : IFeature
     {

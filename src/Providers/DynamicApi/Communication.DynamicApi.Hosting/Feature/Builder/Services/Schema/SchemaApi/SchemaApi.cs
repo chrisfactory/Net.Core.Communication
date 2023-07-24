@@ -1,11 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
-using Communication;
 
-namespace Communication.DynamicApi.Hosting
+namespace Net.Core.Communication.DynamicApi.Hosting
 {
-
+ 
     internal class SchemaApi : ISchemaApi
     {
         private readonly IReadOnlyDictionary<string, ISchemaApiAction> _byName;
@@ -14,7 +13,7 @@ namespace Communication.DynamicApi.Hosting
         {
             Feature = descriptor;
             ServiceType = descriptor.ServiceType; 
-            RouteProvider = descriptor.RouteProvider;
+            RouteProvider = descriptor.RouteProvider; 
             ProxyType = proxyProvider.GetProxyType(descriptor.ServiceType);
 
             var bn = new Dictionary<string, ISchemaApiAction>();
@@ -34,7 +33,7 @@ namespace Communication.DynamicApi.Hosting
         public TypeInfo ServiceType { get; }
         public TypeInfo ProxyType { get; }
         public IReadOnlyDictionary<string, ISchemaApiAction> Actions { get; }
-        public IRouteControllerProvider RouteProvider { get; }
+        public IRouteControllerProvider RouteProvider { get; } 
         public IDynamicApiFeature Feature { get; }
 
         public IEnumerator<ISchemaApiAction> GetEnumerator()

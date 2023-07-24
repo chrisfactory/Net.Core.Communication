@@ -1,8 +1,8 @@
-﻿using Communication;
+﻿using Net.Core.Communication;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Communication.Injection.Client
+namespace Net.Core.Communication.Injection.Client
 {
     public interface ICommunicationFrameClientFilter : ICommunicationFrameFilter
     {

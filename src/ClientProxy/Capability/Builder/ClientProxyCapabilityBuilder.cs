@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Communication.ClientProxy
+namespace Net.Core.Communication.ClientProxy
 {
     public interface IClientProxyCapabilityBuilder
     {

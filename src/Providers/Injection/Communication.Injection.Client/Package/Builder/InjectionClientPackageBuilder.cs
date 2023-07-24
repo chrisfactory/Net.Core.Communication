@@ -1,10 +1,11 @@
-﻿using Communication.ClientProxy;
-using Communication;
+﻿using Net.Core.Communication.ClientProxy;
+using Net.Core.Communication.ClientProxy;
+using Net.Core.Communication;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 
-namespace Communication.Injection.Client
+namespace Net.Core.Communication.Injection.Client
 {
     internal class RootServiceProvider
     {

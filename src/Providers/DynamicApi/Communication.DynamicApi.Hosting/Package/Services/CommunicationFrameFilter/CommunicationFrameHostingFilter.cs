@@ -1,8 +1,8 @@
-﻿using Communication;
+﻿using Net.Core.Communication;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Communication.DynamicApi.Hosting
+namespace Net.Core.Communication.DynamicApi.Hosting
 {
     public interface ICommunicationFrameHostingFilter : ICommunicationFrameFilter
     {

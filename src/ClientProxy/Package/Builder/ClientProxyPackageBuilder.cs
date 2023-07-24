@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic; 
-namespace Communication.ClientProxy
+namespace Net.Core.Communication.ClientProxy
 {
     internal class ClientProxyPackageBuilder : IClientProxyPackageBuilder
     {

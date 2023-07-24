@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Communication.DynamicApi
+namespace Net.Core.Communication.DynamicApi
 {
 
     internal class SchemaApiActionProvider : ISchemaApiActionProvider

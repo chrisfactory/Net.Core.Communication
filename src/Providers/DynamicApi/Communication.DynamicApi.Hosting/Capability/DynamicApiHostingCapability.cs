@@ -1,9 +1,10 @@
 ﻿using System;
 
-namespace Communication.DynamicApi.Hosting
+namespace Net.Core.Communication.DynamicApi.Hosting
 {
     public interface IDynamicApiHostingCapability : IDynamicApiCapability
     {
+
     }
     internal class DynamicApiHostingCapability : IDynamicApiHostingCapability
     {

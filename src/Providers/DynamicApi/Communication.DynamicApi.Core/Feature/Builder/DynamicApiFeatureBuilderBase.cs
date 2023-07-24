@@ -1,7 +1,6 @@
-﻿using Communication;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Communication.DynamicApi.Core.Feature.Builder
+namespace Net.Core.Communication.DynamicApi.Core.Feature.Builder
 {
     public interface IDynamicApiFeatureBuilderBase
     {

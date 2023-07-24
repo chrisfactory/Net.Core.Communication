@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 
-namespace Communication.DynamicApi.Hosting
+namespace Net.Core.Communication.DynamicApi.Hosting
 {
     internal enum MethodTypeCall
     {
@@ -40,15 +39,25 @@ namespace Communication.DynamicApi.Hosting
                     case MethodTypeCall.VoidInvoke:
                         return _ProxyMethod;
                     case MethodTypeCall.VoidInvokeRequest:
-                        { 
-                            return _ProxyMethod.MakeGenericMethod(ServiceMethod.GetParameters()[0].ParameterType);
+                        {
+                            var props = new Dictionary<string, Type>();
+                            foreach (var parameter in ServiceMethod.GetParameters())
+                                props.Add(parameter.Name, parameter.ParameterType);
+
+                            var dType = DynamicClassFactory.CreateType(props, serviceApiType, $"{ActionName}Request");
+                            return _ProxyMethod.MakeGenericMethod(dType);
 
                         }
                     case MethodTypeCall.TypeInvoke:
                         return _ProxyMethod.MakeGenericMethod(ServiceMethod.ReturnType);
                     case MethodTypeCall.TypeInvokeRequest:
-                        { 
-                            return _ProxyMethod.MakeGenericMethod(ServiceMethod.ReturnType, ServiceMethod.GetParameters()[0].ParameterType);
+                        {
+                            var props = new Dictionary<string, Type>();
+                            foreach (var parameter in ServiceMethod.GetParameters())
+                                props.Add(parameter.Name, parameter.ParameterType);
+
+                            var dType = DynamicClassFactory.CreateType(props, serviceApiType, $"{ActionName}Request");
+                            return _ProxyMethod.MakeGenericMethod(ServiceMethod.ReturnType, dType);
                         }
                 }
             }

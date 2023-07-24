@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 
-namespace Communication.DynamicApi
+namespace Net.Core.Communication.DynamicApi
 {
     internal class SchemaApiFactory : ISchemaApiFactory
     {

@@ -1,13 +1,11 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
 using System.Reflection;
 
-namespace Communication.DynamicApi.Hosting
+namespace Net.Core.Communication.DynamicApi.Hosting
 {
-    //[AuthorizeAttribute]
     internal class HostProxyController<T> : IHostProxyController<T>
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
@@ -42,11 +40,12 @@ namespace Communication.DynamicApi.Hosting
             _schemaApi[path].ServiceMethod.Invoke(_Provider.GetRequiredService<T>(), null);
         }
         public void Invoke<TRequest>(TRequest request)
+             where TRequest : DynamicClass
         {
             var context = _httpContextAccessor.HttpContext;
             var path = context.Request.Path.Value.Split('/', StringSplitOptions.RemoveEmptyEntries).Last();
 
-            _schemaApi[path].ServiceMethod.Invoke(_Provider.GetRequiredService<T>(), new object[] { request });
+            _schemaApi[path].ServiceMethod.Invoke(_Provider.GetRequiredService<T>(), request.GetValues());
         }
         public TResult Invoke<TResult>()
         {
@@ -56,13 +55,14 @@ namespace Communication.DynamicApi.Hosting
             return (TResult)_schemaApi[path].ServiceMethod.Invoke(_Provider.GetRequiredService<T>(), null);
         }
 
-        public TResult Invoke<TResult, TRequest>(TRequest request) 
+        public TResult Invoke<TResult, TRequest>(TRequest request)
+            where TRequest : DynamicClass
         {
 
             var context = _httpContextAccessor.HttpContext;
             var path = context.Request.Path.Value.Split('/', StringSplitOptions.RemoveEmptyEntries).Last();
 
-            return (TResult)_schemaApi[path].ServiceMethod.Invoke(_Provider.GetRequiredService<T>(), new object[] { request });
+            return (TResult)_schemaApi[path].ServiceMethod.Invoke(_Provider.GetRequiredService<T>(), request.GetValues());
         }
     }
 }

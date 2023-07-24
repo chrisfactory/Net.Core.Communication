@@ -1,16 +1,10 @@
-﻿using Communication.DynamicApi.Client;
-using Communication;
+﻿using Net.Core.Communication.DynamicApi;
+using Net.Core.Communication.DynamicApi.Client;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
     public static partial class IDynamicApiHostingFeatureBuilderExtensions
     {
-        public static IDynamicApiClientFeatureBuilder UseRouteDefaul(this IDynamicApiClientFeatureBuilder builder) 
-        {
-            builder.Services.AddSingleton<IRouteControllerProvider, NameTypeRouteControllerProvider>();
-            return builder;
-        }
-
         public static IDynamicApiClientFeatureBuilder UseRoute<TRoute>(this IDynamicApiClientFeatureBuilder builder)
             where TRoute : class, IRouteControllerProvider
         {

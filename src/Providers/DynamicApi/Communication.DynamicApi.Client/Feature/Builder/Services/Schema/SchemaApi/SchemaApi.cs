@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Reflection;
 using System.Threading;
-using Communication;
 
-namespace Communication.DynamicApi.Client
+namespace Net.Core.Communication.DynamicApi.Client
 {
 
     internal class SchemaApi : ISchemaApi

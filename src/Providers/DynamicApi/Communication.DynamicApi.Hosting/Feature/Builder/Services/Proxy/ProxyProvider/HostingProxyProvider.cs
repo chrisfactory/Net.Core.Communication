@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace Communication.DynamicApi.Hosting
+namespace Net.Core.Communication.DynamicApi.Hosting
 {
     internal class HostingProxyProvider : IProxyProvider
     {

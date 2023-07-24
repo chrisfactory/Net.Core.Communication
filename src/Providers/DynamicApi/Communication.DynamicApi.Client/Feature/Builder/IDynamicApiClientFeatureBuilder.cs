@@ -1,6 +1,6 @@
-﻿using Communication.DynamicApi.Core.Feature.Builder;
+﻿using Net.Core.Communication.DynamicApi.Core.Feature.Builder;
 
-namespace Communication.DynamicApi.Client
+namespace Net.Core.Communication.DynamicApi.Client
 {
     public interface IDynamicApiClientFeatureBuilder : IDynamicApiFeatureBuilderBase
     {

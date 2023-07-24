@@ -1,6 +1,6 @@
-﻿using Communication;
+﻿using Net.Core.Communication;
 
-namespace Communication.DynamicApi
+namespace Net.Core.Communication.DynamicApi
 {
     public interface IDynamicApiCapability : ICapability
     {

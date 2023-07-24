@@ -1,6 +1,6 @@
-﻿using Communication.ClientProxy;
+﻿using Net.Core.Communication.ClientProxy;
 
-namespace Communication.DynamicApi.Client
+namespace Net.Core.Communication.DynamicApi.Client
 {
     internal interface IPackageResult
     {

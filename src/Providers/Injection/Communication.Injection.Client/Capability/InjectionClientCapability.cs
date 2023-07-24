@@ -1,7 +1,7 @@
-﻿using Communication;
+﻿using Net.Core.Communication;
 using System;
 
-namespace Communication.Injection.Client
+namespace Net.Core.Communication.Injection.Client
 {
     public interface IInjectionClientCapability : ICapability
     {

@@ -1,14 +1,13 @@
-﻿using Communication.ClientProxy;
-using Communication;
+﻿using Net.Core.Communication.ClientProxy;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Reflection;
 
-namespace Communication.DynamicApi.Client
+namespace Net.Core.Communication.DynamicApi.Client
 {
     public interface IDynamicApiClientFeature : IDynamicApiFeature
     {
-        IUriProvider BaseAdressProvider { get; }
+        IUriProvider BaseAddressProvider { get; }
     }
 
     internal class DynamicApiClientFeature : IDynamicApiClientFeature
@@ -17,7 +16,7 @@ namespace Communication.DynamicApi.Client
         {
             SchemaApiProvider = schemaProvider;
             RouteProvider = route;
-            BaseAdressProvider = uriProvider;
+            BaseAddressProvider = uriProvider;
             ServiceType = serviceDescriptor.ServiceType.GetTypeInfo();
         }
         public TypeInfo ServiceType { get; }
@@ -26,6 +25,6 @@ namespace Communication.DynamicApi.Client
 
         public ISchemaApiProvider SchemaApiProvider { get; }
         public IRouteControllerProvider RouteProvider { get; } 
-        public IUriProvider BaseAdressProvider { get; }
+        public IUriProvider BaseAddressProvider { get; }
     }
 }

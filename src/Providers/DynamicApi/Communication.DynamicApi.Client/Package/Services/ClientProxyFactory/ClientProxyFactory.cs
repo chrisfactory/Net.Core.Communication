@@ -1,10 +1,10 @@
-﻿using Communication.ClientProxy;
+﻿using Net.Core.Communication.ClientProxy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Communication.DynamicApi.Client
+namespace Net.Core.Communication.DynamicApi.Client
 {
     internal class ClientProxyFactory : IClientProxyFactory
     {
@@ -25,12 +25,16 @@ namespace Communication.DynamicApi.Client
                 {
                     innerDispatcher.Attach(schema);
                 }
-                return new DisposableProxy<TService>(dispatcher);
+                return new DisposableProxy<TService>(dispatcher, ProxyToString(typeof(TService), innerDispatcher.Address));
             }
 
             return default(IClientProxy<TService>);
         }
 
+        private string ProxyToString(Type type, Uri uri)
+        {
+            return $"DynamicApi Client: {uri} :: ({type.FullName})";
+        }
 
         public int PriorityLevel => 1;
 
@@ -48,6 +52,31 @@ namespace Communication.DynamicApi.Client
         public Type[] GetManagedServices()
         {
             return _schemaScope.Values.Select(s => s.ServiceType).ToArray();
+        }
+
+
+        private class DisposableProxy<TService> : IClientProxy<TService>
+        {
+            private readonly string _toString;
+            public DisposableProxy(TService instance, string toString)
+            {
+                _toString = toString;
+                Proxy = instance;
+            }
+            public TService Proxy { get; }
+
+            public void Dispose()
+            {
+                if (Proxy is IDisposable disp)
+                    disp.Dispose();
+
+            }
+
+            public override string ToString()
+            {
+                return _toString;
+            }
+
         }
     }
 }

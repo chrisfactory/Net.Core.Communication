@@ -1,8 +1,8 @@
-﻿using Communication;
+﻿using Net.Core.Communication;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Communication.DynamicApi.Client
+namespace Net.Core.Communication.DynamicApi.Client
 {
     public interface ICommunicationFrameClientFilter : ICommunicationFrameFilter
     {

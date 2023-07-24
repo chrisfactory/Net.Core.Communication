@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 
-namespace Communication
+namespace Net.Core.Communication
 {
     public interface IPostBuildLoader
     {

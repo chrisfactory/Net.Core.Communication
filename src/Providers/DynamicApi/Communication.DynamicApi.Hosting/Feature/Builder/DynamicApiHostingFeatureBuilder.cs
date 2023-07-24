@@ -1,17 +1,16 @@
-﻿using Communication.DynamicApi.Core.Feature.Builder;
+﻿using Net.Core.Communication;
+using Net.Core.Communication.DynamicApi.Core.Feature.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Communication.DynamicApi.Hosting
+namespace Net.Core.Communication.DynamicApi.Hosting
 {
     internal class DynamicApiHostingFeatureBuilder : DynamicApiFeatureBuilderBase, IDynamicApiHostingFeatureBuilder
     {
-        public DynamicApiHostingFeatureBuilder(ServiceDescriptor service, ICapabilityDescriptor capabilities) : base(service)
-        {
-            Services.AddSingleton(p => capabilities.Get<IDynamicApiHostingCapability>());
+        public DynamicApiHostingFeatureBuilder(ServiceDescriptor service) : base(service)
+        { 
             Services.AddSingleton<IProxyProvider, HostingProxyProvider>();
             Services.AddSingleton<ISchemaApiActionFactory, SchemaApiActionFactory>();
             Services.AddSingleton<ISchemaApi, SchemaApi>();
-            this.UseRouteDefault();
         }
 
 

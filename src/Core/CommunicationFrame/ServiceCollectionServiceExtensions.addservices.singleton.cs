@@ -1,4 +1,4 @@
-﻿using Communication;
+﻿using Net.Core.Communication;
 using System;
 
 namespace Microsoft.Extensions.DependencyInjection

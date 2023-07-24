@@ -1,7 +1,7 @@
-﻿using Communication.DynamicApi.Core.Feature.Builder;
+﻿using Net.Core.Communication.DynamicApi.Core.Feature.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Communication.DynamicApi.Client
+namespace Net.Core.Communication.DynamicApi.Client
 {
     internal class DynamicApiClientFeatureBuilder : DynamicApiFeatureBuilderBase, IDynamicApiClientFeatureBuilder
     {
@@ -9,7 +9,6 @@ namespace Communication.DynamicApi.Client
         { 
             Services.AddSingleton<ISchemaApiActionFactory, SchemaApiActionFactory>();
             Services.AddSingleton<ISchemaApi, SchemaApi>();
-            this.UseRouteDefaul();
         }
 
 

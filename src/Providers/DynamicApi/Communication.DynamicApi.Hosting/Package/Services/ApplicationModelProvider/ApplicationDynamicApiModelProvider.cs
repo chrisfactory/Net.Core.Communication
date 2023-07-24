@@ -1,10 +1,9 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ActionConstraints;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using System.Collections.Generic;
 
-namespace Communication.DynamicApi.Hosting
+namespace Net.Core.Communication.DynamicApi.Hosting
 {
     internal class ApplicationDynamicApiModelProvider : IApplicationModelProvider
     {
@@ -34,12 +33,12 @@ namespace Communication.DynamicApi.Hosting
 
                     var methodAttribute = new HttpPostAttribute();
                     var route = new RouteAttribute(actionName);
-
                     var action = new ActionModel(callApiMethod, new object[] { methodAttribute, route })
                     {
                         ActionName = actionName,
                         Controller = controllerApi
                     };
+
                     foreach (var parameter in callApiMethod.GetParameters())
                     {
                         var prm = new ParameterModel(parameter, new List<object>() { new FromBodyAttribute() { EmptyBodyBehavior = Microsoft.AspNetCore.Mvc.ModelBinding.EmptyBodyBehavior.Disallow } });
@@ -65,16 +64,16 @@ namespace Communication.DynamicApi.Hosting
         private static ControllerModel CreateControllerModel(ApplicationModelProviderContext context, ISchemaApi api)
         {
             var proxy = api.ProxyType;
-            var hostingFeature = (IDynamicApiHostingFeature)api.Feature;
-            string template =$"{api.RouteProvider.GetTemplate(api)}";
-            string name = api.RouteProvider.GetName(api); 
+
+            string template = api.RouteProvider.GetTemplate(api);
+            string name = api.RouteProvider.GetName(api);
+
             var routeApi = new RouteAttribute(template);
-            //var auth = new AuthorizeAttribute();
-            routeApi.Name = name;
-            var apiAttributes = new List<object>() { new ApiControllerAttribute(), routeApi /*, auth*/ };
+            var apiAttributes = new List<object>() { new ApiControllerAttribute(), routeApi };
             var controllerApi = new ControllerModel(proxy, apiAttributes);
             controllerApi.ControllerName = name;
             controllerApi.Application = context.Result;
+            controllerApi.ApiExplorer.GroupName = name;
 
             var apiSelector = new SelectorModel();
             apiSelector.AttributeRouteModel = new AttributeRouteModel(routeApi);

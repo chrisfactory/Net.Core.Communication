@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Communication.Injection.Client
+namespace Net.Core.Communication.Injection.Client
 {
     public interface IInjectionClientFeatureBuilder
     {
