@@ -69,9 +69,9 @@ namespace Communication.DynamicApi.Hosting
             string template =$"{api.RouteProvider.GetTemplate(api)}";
             string name = api.RouteProvider.GetName(api); 
             var routeApi = new RouteAttribute(template);
-            var auth = new AuthorizeAttribute();
+            //var auth = new AuthorizeAttribute();
             routeApi.Name = name;
-            var apiAttributes = new List<object>() { new ApiControllerAttribute(), routeApi , auth };
+            var apiAttributes = new List<object>() { new ApiControllerAttribute(), routeApi /*, auth*/ };
             var controllerApi = new ControllerModel(proxy, apiAttributes);
             controllerApi.ControllerName = name;
             controllerApi.Application = context.Result;

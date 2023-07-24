@@ -7,7 +7,7 @@ using System.Reflection;
 
 namespace Communication.DynamicApi.Hosting
 {
-    [AuthorizeAttribute]
+    //[AuthorizeAttribute]
     internal class HostProxyController<T> : IHostProxyController<T>
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
