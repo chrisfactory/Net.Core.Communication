@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
 
 namespace Net.Core.Communication
 {
     public interface IPostBuildLoader
     {
-        void PostBuild(IApplicationBuilder builder);
+        void PostBuild(IServiceProvider provider);
     }
 }

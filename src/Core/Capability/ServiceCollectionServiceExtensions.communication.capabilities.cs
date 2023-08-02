@@ -1,5 +1,4 @@
 ﻿using Net.Core.Communication;
-using Microsoft.AspNetCore.Builder;
 using System;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -19,12 +18,12 @@ namespace Microsoft.Extensions.DependencyInjection
 
 
 
-        public static IApplicationBuilder UseCommunication(this IApplicationBuilder app)
+        public static IServiceProvider UseCommunication(this IServiceProvider provider)
         {
-            foreach (var postBuildLoader in app.ApplicationServices.GetServices<IPostBuildLoader>())
-                postBuildLoader.PostBuild(app);
+            foreach (var postBuildLoader in provider.GetServices<IPostBuildLoader>())
+                postBuildLoader.PostBuild(provider);
 
-            return app;
+            return provider;
         }
     }
 }
